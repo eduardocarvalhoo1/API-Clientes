@@ -14,12 +14,7 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
-    @GetMapping("/boasVindas")
-    public String boasVindas(){
-        return "Primeira msg";
-    }
-
-    @PostMapping("/create")
+    @PostMapping()
     public ClienteDTO createCliente(@RequestBody ClienteDTO cliente){
         return clienteService.createCliente(cliente);
     }
@@ -34,12 +29,12 @@ public class ClienteController {
         return clienteService.findById(id);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/{id}")
     public ClienteDTO updateCliente(@PathVariable Long id, @RequestBody ClienteDTO cliente){
         return clienteService.updateCliente(id, cliente);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deletarCliente(@PathVariable Long id){
         clienteService.deleteCliente(id);
     }

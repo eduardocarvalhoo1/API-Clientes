@@ -20,27 +20,27 @@ public class ClienteController {
     }
 
     @PostMapping("/create")
-    public ClienteModel createCliente(@RequestBody ClienteModel cliente){
+    public ClienteDTO createCliente(@RequestBody ClienteDTO cliente){
         return clienteService.createCliente(cliente);
     }
 
     @GetMapping()
-    public List<ClienteModel> findAll(){
+    public List<ClienteDTO> findAll(){
         return clienteService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ClienteModel findById(@PathVariable Long id){
+    public ClienteDTO findById(@PathVariable Long id){
         return clienteService.findById(id);
     }
 
-    @PutMapping("/edit")
-    public String editarCliente(){
-        return "Editado";
+    @PutMapping("/edit/{id}")
+    public ClienteDTO updateCliente(@PathVariable Long id, @RequestBody ClienteDTO cliente){
+        return clienteService.updateCliente(id, cliente);
     }
 
-    @DeleteMapping("/delete")
-    public String deletarCliente(){
-        return "Cliente deletado";
+    @DeleteMapping("/delete/{id}")
+    public void deletarCliente(@PathVariable Long id){
+        clienteService.deleteCliente(id);
     }
 }
